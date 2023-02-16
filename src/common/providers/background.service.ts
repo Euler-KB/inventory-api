@@ -48,16 +48,19 @@ export class BackgroundService {
       port: config.get<number>('REDIS_PORT') || 6379,
       maxRetriesPerRequest: null,
     });
+    const autorun = config.get<string>('NODE_ENV') !== 'test';
     this.queue = new Queue('Crawler', { connection: this.connection });
     this.worker = new Worker<CrawlerJobData, any>(
       'Crawler',
       this.runCrawler.bind(this),
       {
         connection: this.connection,
+        autorun,
       },
     );
     this.queueEvents = new QueueEvents('Crawler', {
       connection: this.connection,
+      autorun,
     });
   }
 

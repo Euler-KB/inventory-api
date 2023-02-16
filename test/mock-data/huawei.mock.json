@@ -1,6 +1,6 @@
 {
   "name": "Huawei",
-  "website": "https://www.huawei.com/en/",
+  "website": "https://www.huawei.com/",
   "crawlerSpec": {
     "product": {
       "pages": [
