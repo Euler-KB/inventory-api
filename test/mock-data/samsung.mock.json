@@ -1,0 +1,56 @@
+{
+  "name": "Samsung",
+  "website": "https://www.samsung.com/",
+  "crawlerSpec": {
+    "product": {
+      "pages": [
+        {
+          "url": "https://www.samsung.com/us/mobile/phones/all-phones/",
+          "productSelector": "a[class*=\"ProductCard-anchorWrapper_img\"]",
+          "fields": [
+            {
+              "key": "name",
+              "selector": "div[class*=\"ProductCard-infoSection\"] > a"
+            },
+            {
+              "key": "price",
+              "selector": ".Product-card__price-current"
+            }
+          ],
+          "specMeta": {
+            "actions": [
+              { "type": "delay" , "delay": 2000 },
+              {  "type": "waitSelector", "selector": ".sub-body-content", "stage": "after" },
+              {  "type": "autoScroll", "stage": "after" },
+              {  "type": "click", "selector": ".compare-models-section", "stage": "after" },
+              {  "type": "waitSelector", "stage": "after", "selector": ".compare-container" }
+            ],
+            "selectors": [
+              {
+                "key": "Battery",
+                "selector": [
+                  ".feature .compare-icon-text-container",
+                  0
+                ]
+              },
+              {
+                "key": "Processor",
+                "selector": [
+                  ".feature .compare-icon-text-container",
+                  3
+                ]
+              },
+              {
+                "key": "RAM Options",
+                "selector": [
+                  ".feature .options-list",
+                  3
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

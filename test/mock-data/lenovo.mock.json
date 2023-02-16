@@ -1,0 +1,41 @@
+{
+  "name": "Lenovo",
+  "website": "https://www.lenovo.com/",
+  "crawlerSpec": {
+    "product": {
+      "pages": [
+        {
+          "url": "https://www.lenovo.com/gh/en/laptops/c/Laptops#use1=USAGE_ATTR1",
+          "productSelector": ".subListings-media.qa-splitter-media-byUseType > a",
+          "fields": [
+            {
+              "key": "name",
+              "selector": ".subListing-title"
+            },
+            {
+              "key": "description",
+              "selector": ".productDescription.qa-splitter-seemore-description"
+            }
+          ],
+          "specMeta": {
+            "actions": [ { "type": "waitSelector", "selector": "#tab-techspec", "stage": "after" }],
+            "selectors": [
+              {
+                "key": "Processor",
+                "selector": ".techSpecs-table > tbody > tr:nth-of-type(2) > td:last-child"
+              },
+              {
+                "key": "Operating System",
+                "selector": ".techSpecs-table > tbody > tr:nth-of-type(3) > td:last-child"
+              },
+              {
+                "key": "Graphics",
+                "selector": ".techSpecs-table > tbody > tr:nth-of-type(4) > td:last-child"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

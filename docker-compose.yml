@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  api:
+    build:
+      dockerfile: './docker.yml'
+      context: './'
+    container_name: inventory-api
+    ports:
+      - "8080:3000"
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:alpine
+    volumes:
+      - ./redis/conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - "6379:6379"

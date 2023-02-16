@@ -1,0 +1,71 @@
+{
+  "name": "Huawei",
+  "website": "https://www.huawei.com/en/",
+  "crawlerSpec": {
+    "product": {
+      "pages": [
+        {
+          "url": "https://consumer.huawei.com/en/laptops/?ic_medium=hwdc&ic_source=corp_header_consumer",
+          "productSelector": ".series-item-card_btns > a",
+          "fields": [
+            {
+              "key": "name",
+              "selector": ".series-item-card_title.series-item-card-title_normal > a"
+            },
+            {
+              "key": "description",
+              "selector": ".series-item-card_points"
+            }
+          ],
+          "specMeta": {
+            "actions": [
+              {
+                "type": "delay",
+                "delay": 2000,
+                "stage": "before"
+              },
+              {
+                "type": "click",
+                "selector": "[ha-id=\"new_product_detail_click_navigation\"][data-title=\"Specifications\"]",
+                "stage": "before"
+              },
+              {
+                "type": "delay",
+                "delay": 750,
+                "stage": "before"
+              },
+              {
+                "type": "waitSelector",
+                "selector": ".container",
+                "stage": "before"
+              }
+            ],
+            "selectors": [
+              {
+                "key": "Operating System",
+                "selector": [
+                  ".large-accordion__item .large-accordion__content",
+                  0
+                ]
+              },
+              {
+                "key": "Graphics",
+                "selector": [
+                  ".large-accordion__item .large-accordion__inner > p",
+                  9
+                ]
+              },
+              {
+                "key": "Processor",
+                "selector":[
+                  ".large-accordion__item .large-accordion__inner > p",
+                  8
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
